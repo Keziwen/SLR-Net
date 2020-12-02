@@ -15,7 +15,7 @@ If you use this code, please refer to:
 ## Requirements
 This framework requires Python 3.6 and the tensorflow repository, the main dependencies are as follows:
 
- - TensorFlow >= 2.0
+ - TensorFlow >= 2.2
  - python 3.6
  - scipy >= 1.2.1
  - h5py >= 2.9.0
