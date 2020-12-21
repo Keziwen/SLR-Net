@@ -122,9 +122,10 @@ class SLRCell(layers.Layer):
             self.nb, nc, self.nt, self.nx, self.ny = input_shape
         x_rec, x_sym, beta, t, d, csm = data
 
-        t = self.lowrank(x_rec)
-        x_rec, x_sym = self.sparse(x_rec, d, t, beta, csm)
         
+        x_rec, x_sym = self.sparse(x_rec, d, t, beta, csm)
+        t = self.lowrank(x_rec)
+   
         beta = self.beta_mid(beta, x_rec, t)
 
         data[0] = x_rec
