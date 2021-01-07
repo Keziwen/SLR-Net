@@ -13,7 +13,7 @@ def get_dataset(mode, dataset_name, batch_size, shuffle=False, full=True):
     if dataset_name == 'DYNAMIC_V2_MULTICOIL':
         dataset_suffix = 'cine_multicoil_'
 
-    filenames = [os.path.join('/data1/wenqihuang/LplusSNet/data/20coil', dataset_suffix+mode+'.tfrecord')]
+    filenames = [os.path.join('/data/20coil', dataset_suffix+mode+'.tfrecord')]
 
     dataset = tf.data.TFRecordDataset(filenames)
     dataset = dataset.map(parse_function)
