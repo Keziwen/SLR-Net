@@ -1,6 +1,6 @@
 import tensorflow as tf
 import os
-from model import LplusS_Net, S_Net, SLR_Net
+from model import S_Net, SLR_Net
 from dataset_tfrecord import get_dataset
 import argparse
 import scipy.io as scio
