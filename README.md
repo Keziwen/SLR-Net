@@ -1,5 +1,5 @@
 # SLR-Net
-Code for our work: "Deep Low-rank Prior in Dynamic MR Imaging"
+Code for our work: "Learned Low-rank Priors in Dynamic MR Imaging"
 
 If you use this code, please refer to:
 ```
