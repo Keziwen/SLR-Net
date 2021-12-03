@@ -147,7 +147,7 @@ def mse(recon, label):
 
 def fft2c_mri(x):
     # nb nx ny nt
-    X = tf.signal.fftshift(x, 2)
+    X = tf.signal.ifftshift(x, 2)
     X = tf.transpose(X, perm=[0,1,3,2]) # permute to make nx dimension the last one.
     X = tf.signal.fft(X)
     X = tf.transpose(X, perm=[0,1,3,2]) # permute back to original order.
@@ -155,7 +155,7 @@ def fft2c_mri(x):
     nx = tf.constant(np.complex64(nx + 0j))
     ny = tf.constant(np.complex64(ny + 0j))
     X = tf.signal.fftshift(X, 2) / tf.sqrt(nx)
-    X = tf.signal.fftshift(X, 3)
+    X = tf.signal.ifftshift(X, 3)
     X = tf.signal.fft(X)
     X = tf.signal.fftshift(X, 3) / tf.sqrt(ny)
         
@@ -163,7 +163,7 @@ def fft2c_mri(x):
 
 def ifft2c_mri(X):
     # nb nx ny nt
-    x = tf.signal.fftshift(X, 2)
+    x = tf.signal.ifftshift(X, 2)
     x = tf.transpose(x, perm=[0,1,3,2]) # permute a to make nx dimension the last one.
     x = tf.signal.ifft(x)
     x = tf.transpose(x, perm=[0,1,3,2]) # permute back to original order.
@@ -173,7 +173,7 @@ def ifft2c_mri(X):
 
     x = tf.signal.fftshift(x, 2) * tf.sqrt(nx)
 
-    x = tf.signal.fftshift(x, 3)
+    x = tf.signal.ifftshift(x, 3)
     x = tf.signal.ifft(x)
     x = tf.signal.fftshift(x, 3) * tf.sqrt(ny)
         
@@ -274,7 +274,7 @@ class Emat_xyt():
     
     def _fft2c_mri_multicoil(self, x):
         # nb nt nx ny -> nb, nc, nt, nx, ny
-        X = tf.signal.fftshift(x, 3)
+        X = tf.signal.ifftshift(x, 3)
         X = tf.transpose(X, perm=[0,1,2,4,3]) # permute to make nx dimension the last one.
         X = tf.signal.fft(X)
         X = tf.transpose(X, perm=[0,1,2,4,3]) # permute back to original order.
@@ -282,7 +282,7 @@ class Emat_xyt():
         nx = tf.constant(np.complex64(nx + 0j))
         ny = tf.constant(np.complex64(ny + 0j))
         X = tf.signal.fftshift(X, 3) / tf.sqrt(nx)
-        X = tf.signal.fftshift(X, 4)
+        X = tf.signal.ifftshift(X, 4)
         X = tf.signal.fft(X)
         X = tf.signal.fftshift(X, 4) / tf.sqrt(ny)
         
@@ -290,7 +290,7 @@ class Emat_xyt():
 
     def _ifft2c_mri_multicoil(self, X):
         # nb nt nx ny -> nb, nc, nt, nx, ny
-        x = tf.signal.fftshift(X, 3)
+        x = tf.signal.ifftshift(X, 3)
         x = tf.transpose(x, perm=[0,1,2,4,3]) # permute a to make nx dimension the last one.
         x = tf.signal.ifft(x)
         x = tf.transpose(x, perm=[0,1,2,4,3]) # permute back to original order.
@@ -300,7 +300,7 @@ class Emat_xyt():
 
         x = tf.signal.fftshift(x, 3) * tf.sqrt(nx)
 
-        x = tf.signal.fftshift(x, 4)
+        x = tf.signal.ifftshift(x, 4)
         x = tf.signal.ifft(x)
         x = tf.signal.fftshift(x, 4) * tf.sqrt(ny)
         
@@ -308,7 +308,7 @@ class Emat_xyt():
 
     def _fft2c_mri_singlecoil(self, x):
         # nb nx ny nt
-        X = tf.signal.fftshift(x, 2)
+        X = tf.signal.ifftshift(x, 2)
         X = tf.transpose(X, perm=[0,1,3,2]) # permute to make nx dimension the last one.
         X = tf.signal.fft(X)
         X = tf.transpose(X, perm=[0,1,3,2]) # permute back to original order.
@@ -316,7 +316,7 @@ class Emat_xyt():
         nx = tf.constant(np.complex64(nx + 0j))
         ny = tf.constant(np.complex64(ny + 0j))
         X = tf.signal.fftshift(X, 2) / tf.sqrt(nx)
-        X = tf.signal.fftshift(X, 3)
+        X = tf.signal.ifftshift(X, 3)
         X = tf.signal.fft(X)
         X = tf.signal.fftshift(X, 3) / tf.sqrt(ny)
         
@@ -324,7 +324,7 @@ class Emat_xyt():
 
     def _ifft2c_mri_singlecoil(self, X):
         # nb nx ny nt
-        x = tf.signal.fftshift(X, 2)
+        x = tf.signal.ifftshift(X, 2)
         x = tf.transpose(x, perm=[0,1,3,2]) # permute a to make nx dimension the last one.
         x = tf.signal.ifft(x)
         x = tf.transpose(x, perm=[0,1,3,2]) # permute back to original order.
@@ -334,7 +334,7 @@ class Emat_xyt():
 
         x = tf.signal.fftshift(x, 2) * tf.sqrt(nx)
 
-        x = tf.signal.fftshift(x, 3)
+        x = tf.signal.ifftshift(x, 3)
         x = tf.signal.ifft(x)
         x = tf.signal.fftshift(x, 3) * tf.sqrt(ny)
         
